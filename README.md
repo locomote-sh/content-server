@@ -1,2 +1,3 @@
-# content-server
-Locomote content server.
+# locomote-content-server
+
+Locomote.sh content server

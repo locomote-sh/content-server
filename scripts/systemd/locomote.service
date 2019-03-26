@@ -1,0 +1,16 @@
+[Unit]
+Description=Locomote content server
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+User=locomote
+Group=locomote
+WorkingDirectory=/home/locomote
+ExecStart=/bin/bash -c 'PATH=$PATH:/home/locomote/bin exec locomote-server /home/locomote/settings.js'
+Restart=always
+Environment=USER=locomote HOME=/home/locomote
+
+[Install]
+WantedBy=multi-user.target

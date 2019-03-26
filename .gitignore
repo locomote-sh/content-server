@@ -59,3 +59,14 @@ typings/
 
 # next.js build output
 .next
+
+# Locomote specific
+test
+
+# ---> Vim
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~

@@ -1,0 +1,22 @@
+#!/bin/bash
+# Git hook script to notify locomote.sh of updates to content repositories.
+
+# Extract account and repo names from the current working dir path.
+#dir = pwd;                      # e.g. {repo home}/{account}/{repo}/.git/hooks
+#repodir = ${dir%/.git/hooks}    # See http://stackoverflow.com/a/10987027
+repodir=$(pwd);
+accountdir=$(dirname $repodir);
+account=$(basename $accountdir);
+repo=$(basename $repodir);
+
+# Following taken from http://stackoverflow.com/a/13057643
+# Read update info from stdin.
+while read oldrev newrev refname
+do
+    # Extract branch name.
+    branch=$(git rev-parse --symbolic --abbrev-ref $refname);
+
+    # Build update key and echo to locomote server listening on port 8870.
+    key="$account/$repo/$branch";
+    echo "$key" | nc localhost 8870
+done

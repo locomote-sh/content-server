@@ -1,0 +1,46 @@
+Overview:
+* Each account gets a dedicated search DB containing the indexable contents of every
+  public branch of the account's repos.
+* Each search DB is an sqlite instance using the FTS extension.
+* The core table in each search DB has the following fields:
+    - repo name
+    - branch name
+    - file ID
+    - file path
+    - title
+    - content
+    - category
+    - commit
+* An ancillary table lists the last indexed commit of each branch, with the following fields:
+    - repo name
+    - branch name
+    - commit
+    - date of last index
+* Search requests are executed as full-text search queries on the search DB. Queries execute
+  against whatever content is available at the time.
+* Search results are cached using a fingerprint formed from the search term + the latest
+  commit ID(s) of the source branches included in the query results, i.e.:
+    + search term
+    + search mode
+    + list of branch commits
+* The search DB is populated and updated separately from the query mechanism (i.e. search
+  index updates are not pulled / lazily generated as a result of query requests). This means
+  that there may be a delay between content being published and content becoming available
+  in the search index.
+* Search DB updates are scheduled after startup, and triggered after each repo push.
+* Each search DB update works for each repo as follows:
+    - get the latest commit of content currently in the search DB
+    - list each commit made to the repo since the last in the search DB
+    - for each commit:
+        - open a transaction on the search DB
+        - list the updates in the commit
+        - extract the indexable content 
+        - insert or update the file record in the search DB
+        - commit the transaction once all updates from the commit are inserted
+  > Transactions are used so that commits provide a degree of content atomicity; i.e. content
+    from a commit is only indexed if *all* content from the commit is indexed.
+        - Make this a configurable option? Updates won't be missed so long as the ancillary
+          commit table isn't updated until all updates are inserted
+* Only indexable repos are included in the search DB. An indexable repo is a repo with
+  { "indexed": true } in its manifest.
+

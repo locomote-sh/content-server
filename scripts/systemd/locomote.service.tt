@@ -1,0 +1,18 @@
+[Unit]
+Description=Locomote.sh server
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+User={user}
+Group={group}
+WorkingDirectory={home}/locomote-server
+#ExecStart={home}/locomote-server/bin/locomote -m {home}/locomote-server/locomote-settings.js -c {config}
+# Following taken from https://unix.stackexchange.com/a/347897; necessary for build commands to be found.
+ExecStart=/bin/bash -c 'PATH=$PATH:{home}/bin exec /home/locomote/locomote-server/bin/locomote -m {home}/locomote-server/locomote-settings.js -c {config}'
+Restart=always
+Environment=USER={user} HOME={home}
+
+[Install]
+WantedBy=multi-user.target
