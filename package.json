@@ -1,6 +1,6 @@
 {
-  "name": "locomote-content-server",
-  "version": "0.2.11",
+  "name": "@locomote.sh/content-server",
+  "version": "0.2.12",
   "description": "Locomote.sh content server",
   "main": "lib/index.js",
   "dependencies": {
@@ -16,7 +16,6 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
     "farmhash": "^2.1.0",
-    "indexeddbshim": "^3.10.0",
     "json-link": "git+https://github.com/locomote-sh/json-link.git",
     "log4js": "^3.0.6",
     "lru-cache": "^4.1.1",
