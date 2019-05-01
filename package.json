@@ -23,8 +23,7 @@
     "negotiator": "^0.6.1",
     "sqlite3": "^4.0.2",
     "through": "^2.3.8",
-    "understruct": "git+https://github.com/juliangoacher/understruct.git",
-    "which": "^1.3.1"
+    "understruct": "git+https://github.com/juliangoacher/understruct.git"
   },
   "scripts": {
     "locomote-server": "./bin/locomote-server",
