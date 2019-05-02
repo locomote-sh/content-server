@@ -99,23 +99,10 @@ const DefaultSettings = new Settings({
         disabled:                       true,
         // A location on the filesystem used as a builds workspace.
         workspaceHome:                  Path.resolve('./workspace'),
-        // A location on the filesystem where build scripts are homed.
-        buildScriptHome:                Path.resolve('./build_scripts'),
-        /*
-        // Build script environment variables.
-        buildScriptEnv: {
-            LOCO_BASE_URL:              '/cms/0.2/files/{account}/{repo}/~{branch}',
-            LOCO_ACCOUNT:               '{account}',
-            LOCO_REPO:                  '{repo}',
-            LOCO_BRANCH:                '{branch}',
-            LOCO_HOME:                  '/home/locomote',
-            LOCO_MANIFEST:              '_locomote/manifest.json' // TODO Remove?
-        },
-        */
         // Port & hostname that the updates listener binds to.
         updatesListener: {
             port:                       8870,
-            hostname:                   'localhost'
+            host:                       'localhost'
         },
         gogsWebhookSecret:              'xxx',
         handleInternalCUNotifications:  true

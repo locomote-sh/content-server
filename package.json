@@ -25,6 +25,10 @@
     "through": "^2.3.8",
     "understruct": "git+https://github.com/juliangoacher/understruct.git"
   },
+  "devDependencies": {
+    "@locomote.sh/dropbox-gateway": "file:../dropbox-gateway",
+    "@locomote.sh/build-tools": "file:../build-tools"
+  },
   "scripts": {
     "locomote-server": "./bin/locomote-server",
     "locomote-serverd": "./bin/locomote-server-debug",
