@@ -1,13 +1,13 @@
 {
   "name": "@locomote.sh/content-server",
-  "version": "0.2.21",
+  "version": "0.2.22",
   "description": "Locomote.sh content server",
   "main": "lib/index.js",
   "dependencies": {
     "@locomote.sh/fileglob": "git+https://github.com/locomote-sh/fileglob.git",
     "@locomote.sh/filesets": "git+https://github.com/locomote-sh/filesets.git",
     "@locomote.sh/pipeline": "git+https://github.com/locomote-sh/pipeline.git",
-    "@locomote.sh/query-api": "git+https://github.com/locomote-sh/query-api.git",
+    "@locomote.sh/query-api": "^0.8.12",
     "@locomote.sh/tinytemper": "git+https://github.com/locomote-sh/tinytemper.git",
     "@locomote.sh/utils": "git+https://github.com/locomote-sh/utils.git",
     "bcryptjs": "^2.3.0",
