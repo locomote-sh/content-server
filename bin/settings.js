@@ -105,7 +105,8 @@ const DefaultSettings = new Settings({
             host:                       'localhost'
         },
         gogsWebhookSecret:              'xxx',
-        handleInternalCUNotifications:  true
+        handleInternalCUNotifications:  true,
+        builddb:                        Path.resolve('./builddb.json')
     },
     /*
     // Terminal settings.
