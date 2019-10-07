@@ -64,9 +64,9 @@ const DefaultSettings = new Settings({
             location: Path.resolve('./publish_cache'),
             // Garbage collector settings.
             gc: {
-                period: 60, // Run GC once an hour.
-                expire: 7,  // Expire files after 7 days.
-                preserve: []
+                period: 60,         // Run GC once an hour.
+                expire: 7,          // Expire files after 7 days.
+                preserve: ['idb/*'] // Don't delete cached IDB files.
             }
         },
         // HTTP API settings.
